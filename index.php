@@ -13,6 +13,11 @@ if (isset($_GET['page'])) {
             require("controller/authController.php");
             showEnregistrement();
             break;
+        case 'statut':
+            require("controller/statutController.php");
+            showCreatestatut();
+                
+            break;
         case 'logout':
             session_destroy();
             header("Location: $base_url?page=Login");

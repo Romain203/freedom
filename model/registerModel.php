@@ -1,9 +1,12 @@
 <?php
-function Enregistrement($email, $mdp){
+function Enregistrement($nom, $email, $prenom, $age, $mdp){
     global $pdo;
-    $query = $pdo->prepare("INSERT INTO utilisateur (email, mdp) VALUES (:e, :m)");
+    $query = $pdo->prepare("INSERT INTO utilisateur (nom, email, prenom, age, mdp) VALUES (:n, :e, :p, :a, :m)");
     $query->execute([
-        "e" => $email, 
+        "n" => $nom,
+        "e" => $email,
+        "p" => $prenom,
+        "a" => $age,
         "m" => password_hash($mdp, PASSWORD_DEFAULT)
     ]);
     return true;

@@ -19,12 +19,14 @@ function showLogin()
 }
 
 function showEnregistrement()
-{       
+{   
+        
     if ($_POST && $_POST['email'] && $_POST['mdp']) {
        
-    
+        global $base_url;
+        
         require("model/registerModel.php");
-        $utilisateur = enregistrement($_POST['email'], $_POST['mdp']);
+        $utilisateur = enregistrement($_POST['nom'], $_POST['email'], $_POST['prenom'], $_POST['age'], $_POST['mdp']);
         if ($utilisateur) {
            echo "salut aou!: " . $_POST['email']; 
         } else {

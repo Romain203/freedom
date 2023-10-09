@@ -3,7 +3,7 @@ $titre="accueil";?>
 <?php ob_start(); ?>
 <h1>Accueil</h1>
 <body>
-    <section>
+    <!-- <section>
     <div class="card" style="width: 100%;">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
@@ -22,7 +22,8 @@ $titre="accueil";?>
 </div>
   
 </div>
-    </section>
+    </section> -->
+    
 </body>   
 <?php $content = ob_get_clean();     
 require "Layout.php";
