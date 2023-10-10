@@ -5,6 +5,14 @@ $base_url = "http://localhost/freedom/";
 require("model/db.php");
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {
+        case 'show':
+            if(isset($_GET['id_statut'])) {
+            require("controller/statutController.php");
+               showStatut($_GET['id_statut']);
+            } else {
+                header("Location: $base_url?page=Login");   
+            }
+               break;
         case 'login':
             require("controller/authController.php");
             showLogin();
@@ -26,9 +34,12 @@ if (isset($_GET['page'])) {
             require("template/statut.php");
             break;
         default:
-            require("template/Homepage.php");
+            require("controller/statutController.php");
+            showAllstatut();
             break;
     }
-} else {
-    require("template/Homepage.php");
+} 
+else {
+    require("controller/statutController.php");
+    showAllstatut();
 }

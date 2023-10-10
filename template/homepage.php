@@ -1,8 +1,4 @@
-<?php
-$titre="accueil";?>
-<?php ob_start(); ?>
-<h1>Accueil</h1>
-<body>
+
     <!-- <section>
     <div class="card" style="width: 100%;">
   <img src="..." class="card-img-top" alt="...">
@@ -23,8 +19,29 @@ $titre="accueil";?>
   
 </div>
     </section> -->
-    
-</body>   
-<?php $content = ob_get_clean();     
+    <?php 
+$titre = "Accueil"; 
+global $base_url;
+?>
+<?php ob_start(); ?>
+<h1>Accueil</h1>
+
+<div class="container ">
+  <div class="row gy-4 gx-4">
+    <?php for ($i=0; $i < sizeof($statuts) ; $i++) { ?>
+    <div class="col-sm-6 ">
+    <div class="card" style="width: 18rem;">
+  <img src="image/grilled-beef-burger-rustic-ciabatta-bun-generated-by-ai" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">SB</h5>
+    <!-- <h6><?= $statuts[$i]['titre'] ?></h6> -->
+    <p class="card-text"><?= $statuts[$i]['contenu'] ?></p>
+    <a href="<?= $base_url ?>?page=show&id_statut=<?= $statuts[$i]['id_statut'] ?>" class="btn btn-primary">Lire la suite</a>
+  </div>
+</div>
+    </div>
+
+
+<?php } $content = ob_get_clean();
 require "Layout.php";
-?> 
+?>   

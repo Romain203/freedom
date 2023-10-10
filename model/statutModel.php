@@ -1,11 +1,10 @@
 <?php
-function createStatut($id_utilisateur, $id_statut, $contenu)
+function createStatut( $contenu, $id_utilisateur)
 {
     global $pdo;
-    $query = $pdo->prepare("INSERT INTO statut (id_statut, id_utilisateur, contenu) VALUES (:s, :u, :c)");
+    $query = $pdo->prepare("INSERT INTO statut (id_utilisateur, contenu) VALUES (:u, :c)");
     $query->execute([
 
-        "s" => $id_statut,
         "u" => $id_utilisateur,
         "c" => $contenu,
         
@@ -13,22 +12,22 @@ function createStatut($id_utilisateur, $id_statut, $contenu)
     return true;
 }
 
-// function getPosts()
-// {
-//     global $pdo;
-//     $query = $pdo->prepare("SELECT * FROM post");
-//     $query->execute();
-//     $posts = $query->fetchAll();
-//     return $posts;   
-// }
+function getStatuts()
+{
+    global $pdo;
+    $query = $pdo->prepare("SELECT * FROM statut");
+    $query->execute();
+    $statuts = $query->fetchAll();
+    return $statuts;   
+}
 
-// function getPost($id_post)
-// {
-//     global $pdo;
-//     $query = $pdo->prepare("SELECT * FROM post where id_post = :i");
-//     $query->execute([
-//         "i" => $id_post
-//     ]);
-//     $post = $query->fetchAll();
-//     return $post;   
-// }
+function getStatut($id_statut)
+{
+    global $pdo;
+    $query = $pdo->prepare("SELECT * FROM statut where id_statut = :i");
+    $query->execute([
+        "i" => $id_statut
+    ]);
+    $statut = $query->fetchAll();
+    return $statut;   
+}
